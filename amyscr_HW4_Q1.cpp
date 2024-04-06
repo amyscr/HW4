@@ -41,7 +41,7 @@ int main()
     Instagram<string> IS;
     Instagram<Profile> IP;
 
-    //like mentioned in LEC 17 around 24-25:00, had difficulties with compilation
+    //like mentioned in LEC 17 around 24-25:00, had difficulties with compilation despite matching syntax with derived class templates
 
     return 0;
 }

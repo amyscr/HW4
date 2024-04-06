@@ -41,5 +41,7 @@ int main()
     Instagram<string> IS;
     Instagram<Profile> IP;
 
+    //like mentioned in LEC 17 around 24-25:00, had difficulties with compilation
+
     return 0;
 }

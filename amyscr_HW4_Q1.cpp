@@ -38,22 +38,22 @@ public:
         followed = new T[maxFollowed];
         followers = new T[maxFollowers];//for new array
     }
-    
+
     T getHandler(){return this->handler;}
     int getFollowerCount(){return this->followerCount;}
     int getFollowedCount(){return this->followedCount;}
     bool getPrivate(){return this->priv;}
-    
+
     void setHandler(T user){this->handler = user;}
     void setFollowers(int num){this->follower = num;}
     void setFollowed(int num){this->followed = num;}
     void setPrivate(bool priv){this->priv = priv;}
-    
+
     void addFollower (T user)
     {
-        if(this->followerCount < maxFollower)
+        if(this->followerCount < maxFollowers)
         {
-            follower[followerCount] = user;
+            followers[followerCount] = user;
             this->followerCount++;
         }
     }
@@ -65,9 +65,31 @@ public:
             this->followedCount++;
         }
     }
-    void displayFollowers(){}
-    void displayFollowed(){}
-    
+    void displayFollowers()
+    {
+        if(!this->priv)
+        {
+            cout<<"Followers: "<<endl;
+            for(int i = 0; i < this->followerCount; i++)
+            {
+                cout<<followers[i]<<endl;
+            }
+        }
+        else{cout<<"Account is private, cannot view followers."<<endl;}
+    }
+    void displayFollowed()
+    {
+        if(!this->priv)
+        {
+            cout<<"Following: "<<endl;
+            for(int i = 0; i < this->followedCount; i++)
+            {
+                cout<<followed[i]<<endl;
+            }
+        }
+        else{cout<<"Account is private, cannot view following."<<endl;}
+    }
+
 private:
     T handler; //(this represents the account owner)
     T* followers; //to make arrays later
@@ -77,7 +99,29 @@ private:
     bool priv; //which is a flag to indicate whether an account is private or public. Make all accounts private true by default when you create an object. This means user doesn’t want to expose his/her information publicly. We’re going to use this for the display function below
 };
 
+template <class T>
+class Twitter : public SocialMediaAccount
+{
+public:
+    void setRetweetCount(int rt){this->retweetCount = rt;}
+    int getRetweetCount(){return this->retweetCount;}
 
+    void RT(){this->retweetCount++;}
+private:
+    int retweetCount; //to keep track total number of tweets the account owner retweeted. Please define get and set functions
+};
+
+template <class T>
+class Instagram : public SocialMediaAccount
+{
+public:
+    void setLikeCount(int likes){this->likeCount = likes;}
+    int getLikeCount(){return this->likeCount;}
+
+    void Like(){this->likeCount++;}
+private:
+    int likeCount; //to keep track total number of posts that account owner liked. Please define get and set functions.
+};
 
 //above goes in .h file
 
@@ -89,6 +133,12 @@ struct Profile
 
 int main()
 {
-    cout << "Hello world!" << endl;
+    cout << "Starting program." << endl;
+    Twitter<string> TS;
+    Twitter<Profile> TP;
+    Instagram<string> IS;
+    Instagram<Profile> IP;
+
+
     return 0;
 }

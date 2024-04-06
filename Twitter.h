@@ -2,7 +2,8 @@
 #define TWITTER_H
 #include "SocialMediaAccount.h"
 
-class Twitter: public SocialMediaAccount
+template <class T>
+class Twitter: public SocialMediaAccount <T>
 {
 public:
     void setRetweetCount(int rt){this->retweetCount = rt;}

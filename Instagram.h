@@ -2,8 +2,8 @@
 #define INSTAGRAM_H
 #include "SocialMediaAccount.h"
 
-
-class Instagram : public SocialMediaAccount
+template <class T>
+class Instagram : public SocialMediaAccount <T>
 {
 public:
     void setLikeCount(int likes){this->likeCount = likes;}
